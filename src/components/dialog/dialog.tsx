@@ -5,7 +5,6 @@ import styles from "./dialog.module.scss";
 import { capitalize } from "../../lib/capitalize";
 import { Melding } from "../../lib/types/melding";
 import { getFormattedDate } from "../../lib/getFormattedDate";
-import { urgentie } from "../../lib/urgentie";
 
 type DialogProps = {
     open: boolean,
