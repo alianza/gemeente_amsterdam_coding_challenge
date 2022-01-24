@@ -43,11 +43,8 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
 
     useEffect(() => { // Set form elements names to be used with FormData()
         document.getElementById("urgentie")?.setAttribute("name", "urgentie");
-        // document.getElementById("urgentie")?.setAttribute("required", "true");
         document.getElementById("type")?.setAttribute("name", "type");
-        // document.getElementById("type")?.setAttribute("required", "true");
         document.querySelector("#bestanden div input")?.setAttribute("name", "bestanden");
-        // document.querySelector("#bestanden div input")?.setAttribute("required", "true");
     }, [])
 
     return (
@@ -58,12 +55,12 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
                     <b>op</b> {`${melding.dateTime.toLocaleString(locale)}`}
                 </Paragraph>
 
-                <TextField id="object" name="object" label="Object" placeholder="Object:" className={styles.input} required/>
+                <TextField id="object" name="object" label="Object" placeholder="Object:" className={styles.input}/>
 
-                <TextField id="locatie" name="locatie" label="Locatie" placeholder="Locatie:" className={styles.input} required/>
+                <TextField id="locatie" name="locatie" label="Locatie" placeholder="Locatie:" className={styles.input}/>
 
                 <Label htmlFor="beschrijving" label="Beschrijving van de situatie:" className={styles.label}/>
-                <TextArea id="beschrijving" name="beschrijving" placeholder="Beschrijving" required/>
+                <TextArea id="beschrijving" name="beschrijving" placeholder="Beschrijving"/>
 
                 <Select id="urgentie" label="Indicatie van urgentie" defaultValue="4" className={styles.select}>
                     <option value="1">Extreem hoge prioriteit BVM binnen 1 maand</option>
@@ -73,7 +70,7 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
                 </Select>
 
                 <Label htmlFor="toelichting" label="Toelichting op de urgentie" className={styles.label}/>
-                <TextArea id="toelichting" name="toelichting" placeholder="Toelichting:" required/>
+                <TextArea id="toelichting" name="toelichting" placeholder="Toelichting:"/>
 
                 <Label htmlFor="bestanden" label="Bestanden" className={styles.label}/>
                 <FileUpload

@@ -9,7 +9,6 @@ export const formIsValid = (formData: FormDataArray) => {
             setInvalid(key);
         }
 
-
         if (key === 'bestanden') {
             if ((value as File).size === 0) {
                 isValid = false;
@@ -26,9 +25,7 @@ export const formIsValid = (formData: FormDataArray) => {
     });
 
     if (isValid) {
-        document.querySelectorAll(".invalid").forEach(element => {
-            element.classList.remove('invalid');
-        });
+        setValid();
     }
 
     return isValid;
@@ -36,4 +33,10 @@ export const formIsValid = (formData: FormDataArray) => {
 
 const setInvalid = (key: string) => {
     document.getElementById(key)?.classList.add('invalid');
+}
+
+const setValid = () => {
+    document.querySelectorAll(".invalid").forEach(element => {
+        element.classList.remove('invalid');
+    });
 }
