@@ -27,10 +27,13 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const formDataArray: FormDataArray = [];
-        const formData = new FormData(e.target as HTMLFormElement);
+        const form = e.target as HTMLFormElement;
+        const formData = new FormData(form);
         formData.forEach((value, key) => { formDataArray.push({key, value}); });
         if (formIsValid(formDataArray)) {
             onSubmit(formDataArray);
+            setIsOpen(false);
+            form.reset();
         }
     };
 
@@ -40,11 +43,11 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
 
     useEffect(() => { // Set form elements names to be used with FormData()
         document.getElementById("urgentie")?.setAttribute("name", "urgentie");
-        document.getElementById("urgentie")?.setAttribute("required", "true");
+        // document.getElementById("urgentie")?.setAttribute("required", "true");
         document.getElementById("type")?.setAttribute("name", "type");
-        document.getElementById("type")?.setAttribute("required", "true");
+        // document.getElementById("type")?.setAttribute("required", "true");
         document.querySelector("#bestanden div input")?.setAttribute("name", "bestanden");
-        document.querySelector("#bestanden div input")?.setAttribute("required", "true");
+        // document.querySelector("#bestanden div input")?.setAttribute("required", "true");
     }, [])
 
     return (
@@ -88,7 +91,7 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
                     />
 
                 <Select id="type" label="Type informatie" defaultValue="1" placeholder="Maak een keuze" className={`${styles.select} ${styles.slim}`}>
-                    <option value="1" disabled hidden>Maak een keuze</option>
+                    <option value="1" hidden>Maak een keuze</option>
                     <option value="2">Normale melding</option>
                     <option value="3">Noodmelding</option>
                     <option value="4">Actieve verzakking</option>

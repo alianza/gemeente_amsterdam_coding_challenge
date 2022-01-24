@@ -1,8 +1,18 @@
 #header {
-  z-index: 100;
+  z-index: 10;
 }
 
 #accordion {
   max-height: 80vh;
   overflow-y: auto;
+  width: 100%;
+}
+
+#accordion, #label-accordion {
+  max-width: 1200px;
+}
+
+.invalid {
+  border: solid red 2px !important;
+  border-radius: 5px !important;
 }
