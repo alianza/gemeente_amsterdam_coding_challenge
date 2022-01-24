@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Layout from "../components/layout/layout";
+import Content from "../components/content/content";
 
 const testText = "Test Text";
 
-test('Renders layout component', () => {
-  render(<Layout><p>{testText}</p></Layout>);
+test('Renders content component', () => {
+  render(<Content><p>{testText}</p></Content>);
   const linkElement = screen.getByText(testText);
   expect(linkElement).toBeInTheDocument();
 });

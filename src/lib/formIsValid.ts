@@ -3,6 +3,8 @@ import { FormDataArray } from "./types/formDataArray";
 export const formIsValid = (formData: FormDataArray) => {
     let isValid = true;
 
+    setValid();
+
     formData.forEach(({ value, key}) => {
         if (value === '') {
             isValid = false;
@@ -23,10 +25,6 @@ export const formIsValid = (formData: FormDataArray) => {
             }
         }
     });
-
-    if (isValid) {
-        setValid();
-    }
 
     return isValid;
 }

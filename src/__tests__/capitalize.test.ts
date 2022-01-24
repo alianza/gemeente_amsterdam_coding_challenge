@@ -8,9 +8,10 @@ const testWords = [
 ];
 
 it('Capitalizes words', () => {
-    testWords.forEach(word => {
-        expect(capitalize(word.lowerCase)).toEqual(word.capitalized);
-    });
+    expect(capitalize(testWords[0].lowerCase)).toEqual(testWords[0].capitalized);
+    expect(capitalize(testWords[1].lowerCase)).toEqual(testWords[1].capitalized);
+    expect(capitalize(testWords[2].lowerCase)).toEqual(testWords[2].capitalized);
+    expect(capitalize(testWords[3].lowerCase)).toEqual(testWords[3].capitalized);
 });
 
 export {};

@@ -6,8 +6,9 @@ import { Enlarge } from "@amsterdam/asc-assets";
 import { Melding } from "../../lib/types/melding";
 import { FormDataArray } from "../../lib/types/formDataArray";
 import { formIsValid } from "../../lib/formIsValid";
-
-const locale = 'nl'
+import { getFormattedDate } from "../../lib/getFormattedDate";
+import { urgentie } from "../../lib/urgentie";
+import { type } from "../../lib/type";
 
 const postUrl = "localhost:3000"
 
@@ -50,9 +51,9 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
     return (
         <Accordion id="accordion" title="Melding: BRU0016 - Melkmeisjesbrug" isOpen={isOpen} onToggle={(open: boolean) => setIsOpen(open)}>
             <form id="form" onSubmit={handleFormSubmit} className={styles.form}>
-                <Paragraph strong gutterBottom={0} className={styles.paragraph}>
+                <Paragraph gutterBottom={16}>
                     <b>Gemeld door:</b> {`<${melding.naam}> - (${melding.email})`}&nbsp;
-                    <b>op</b> {`${melding.dateTime.toLocaleString(locale)}`}
+                    <b>op</b> {`${getFormattedDate(melding.dateTime)}`}
                 </Paragraph>
 
                 <TextField id="object" name="object" label="Object" placeholder="Object:" className={styles.input}/>
@@ -63,10 +64,10 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
                 <TextArea id="beschrijving" name="beschrijving" placeholder="Beschrijving"/>
 
                 <Select id="urgentie" label="Indicatie van urgentie" defaultValue="4" className={styles.select}>
-                    <option value="1">Extreem hoge prioriteit BVM binnen 1 maand</option>
-                    <option value="2">Hoge prioriteit - BVM binnen 1-3 maanden</option>
-                    <option value="3">Middelmatige prioriteit - BVM binnen 3-6 maanden</option>
-                    <option value="4">Lage prioriteit - BVM binnen 6-12 maanden</option>
+
+                    {urgentie.map(urgentie => (
+                        <option key={urgentie.value} value={urgentie.value}>{urgentie.label}</option>
+                    ))}
                 </Select>
 
                 <Label htmlFor="toelichting" label="Toelichting op de urgentie" className={styles.label}/>
@@ -87,12 +88,11 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
                     getHeaders={(): Promise<{ [key: string]: string; }> => new Promise(resolve => resolve(headers))}
                     />
 
-                <Select id="type" label="Type informatie" defaultValue="1" placeholder="Maak een keuze" className={`${styles.select} ${styles.slim}`}>
+                <Select id="type" label="Type informatie" defaultValue="1" className={`${styles.select} ${styles.slim}`}>
                     <option value="1" hidden>Maak een keuze</option>
-                    <option value="2">Normale melding</option>
-                    <option value="3">Noodmelding</option>
-                    <option value="4">Actieve verzakking</option>
-                    <option value="5">Sinkhole</option>
+                    {type.map(type => (
+                        <option key={type.value} value={type.value}>{type.label}</option>
+                    ))}
                 </Select>
 
                 <Link href="/" variant="inline" className={styles.link}>

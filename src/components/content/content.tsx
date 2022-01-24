@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./layout.module.scss";
+import styles from "./content.module.scss";
 
-function Layout(props: any) {
+function Content(props: any) {
     return (
         <div id="content" className={styles.layout}>
             {props.children}
@@ -9,4 +9,4 @@ function Layout(props: any) {
     );
 }
 
-export default Layout;
+export default Content;

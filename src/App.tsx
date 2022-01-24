@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
-import Layout from "./components/layout/layout";
+import Content from "./components/content/content";
 import Form from "./components/form/form";
 import { Melding } from "./lib/types/melding";
 import { FormDataArray } from "./lib/types/formDataArray";
@@ -28,12 +28,12 @@ const App = () => {
         <>
             <Header/>
 
-            <Layout>
+            <Content>
                 <h1>Nieuwe Melding:</h1>
                 <Form melding={melding} onSubmit={handleSubmit}/>
-            </Layout>
+            </Content>
 
-            <Dialog open={open} setOpen={setOpen} formData={formData}/>
+            <Dialog open={open} setOpen={setOpen} formData={formData} melding={melding}/>
 
             <Footer/>
         </>
