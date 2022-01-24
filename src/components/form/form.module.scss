@@ -1,0 +1,54 @@
+.form {
+    max-width: 75%;
+
+    .input, .select, textArea, .fileUpload, p.paragraph, .link {
+        margin-bottom: 1rem;
+    }
+
+    .input, .select {
+        width: 75%
+    }
+
+    textArea {
+        height: 100px;
+    }
+
+    .slim {
+        width: 50%;
+    }
+
+    Button {
+        display: block;
+    }
+
+    .link {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .label {
+        display: flex;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 25px;
+
+        span {
+            margin-top: 0;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        gap: 1em;
+    }
+
+    @media screen and (max-width: 1024px) {
+        max-width: 100%;
+    }
+}
+
+#accordion, .accordion {
+    max-height: 60vh;
+    overflow-y: auto;
+}

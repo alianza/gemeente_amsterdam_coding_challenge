@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './App.scss';
+import Layout from "./components/layout/layout";
+import Form from "./components/form/form";
+import { Melding } from "./lib/types/melding";
+import { FormDataArray } from "./lib/types/formDataArray";
+import Dialog from "./components/dialog/dialog";
+import Footer from "./components/footer/footer";
+import Header from "./components/header/header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const melding: Melding = {
+    naam: "Pieter Sjaak",
+    email: "pieter@amsterdam.nl",
+    dateTime: new Date(),
 }
+
+const App = () => {
+    const [open, setOpen] = useState(false);
+    const [formData, setFormData] = useState<FormDataArray>([]);
+
+    const handleSubmit = (formData: FormDataArray) => {
+        console.log(formData);
+        setFormData(formData);
+        setOpen(true);
+    };
+
+    return (
+        <>
+            <Header/>
+
+            <Layout>
+                <Form melding={melding} onSubmit={handleSubmit}/>
+            </Layout>
+
+            <Dialog open={open} setOpen={setOpen} formData={formData}/>
+
+            <Footer/>
+        </>
+    );
+};
 
 export default App;
