@@ -13,7 +13,7 @@ import {
 } from "@amsterdam/asc-ui";
 
 const Footer = () => (
-    <AmsterdamFooter>
+    <AmsterdamFooter id="footer">
         <FooterTop>
             <Row>
                 <Column wrap span={{

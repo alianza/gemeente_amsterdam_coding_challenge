@@ -29,6 +29,7 @@ const App = () => {
             <Header/>
 
             <Layout>
+                <h1>Nieuwe Melding:</h1>
                 <Form melding={melding} onSubmit={handleSubmit}/>
             </Layout>
 

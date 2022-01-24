@@ -83,7 +83,7 @@ const Form: FC<FormProps> = ({melding, onSubmit}) => {
                     fileUploadInProgressLabel="Aan het uploaden..."
                     cancelLabel="Afbreken"
                     droppingLabel="Drop maar!"
-                    removeLabel={"Verwijderen"}
+                    removeLabel={"Wissen"}
                     selectFilesLabel={"selecteer één bestand"}
                     className={styles.fileUpload}
                     getPostUrl={(): Promise<string> => new Promise(resolve => resolve(postUrl))}
