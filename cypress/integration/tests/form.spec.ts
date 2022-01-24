@@ -18,7 +18,7 @@ describe('The form', () => {
 
         cy.get('div[role="dialog"]').contains("testPicture.ico").should('exist').should('be.visible');
 
-        cy.get('div[role="dialog"]').find('> p').should('have.length', 7);
+        cy.get('div[role="dialog"]').find('> p').should('have.length', 9);
 
         cy.wait(1000).then(() => {
             cy.get('div[role="dialog"]').contains("✕").click();
